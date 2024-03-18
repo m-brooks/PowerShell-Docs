@@ -19,7 +19,7 @@ processing, and commands that perform the work. Commands in PowerShell are
 implemented as scripts, functions, or cmdlets.
 
 A module is a self-contained reusable unit that can contain cmdlets, providers,
-functions, variables, and other types of resources that can be imported as a
+functions, variables, and other types of resources that can be imported (loaded/ made accessible) as a
 single unit.
 
 PowerShell comes with a base set of modules. You can also install more modules
@@ -107,9 +107,10 @@ the default module locations, see [about_PSModulePath][10].
 ## Module autoloading
 
 The first time that you run a command from an installed module, PowerShell
-automatically imports (loads) that module. The module must be stored in the
+automatically imports (loads into your PowerShell session) that module,
+it has been stored in one of the
 locations specified in the `$env:PSModulePath` environment variable. Modules in
-other locations must be imported using the `Import-Module` cmdlet.
+other locations must be explicitly imported using the `Import-Module` cmdlet.
 
 Module autoloading allows you to use commands in a module without any setup or
 profile configuration. There's no need to manage modules after you install them
@@ -136,8 +137,8 @@ Each of the following examples cause the **CimCmdlets** module, which contains
   Get-Help Get-CimInstance
   ```
 
-You can use the `Get-Command` cmdlet list the commands in all installed
-modules, even if they're not yet in the session. When you use `Get-Command`
+You can use the `Get-Command` cmdlet to list the commands in all installed
+modules, even if they have not yet been imported into the session. When you use `Get-Command`
 with a wildcard character (`*`), PowerShell doesn't import any modules. You can
 use wildcards for command discovery without loading modules that you may not
 need in your session.
